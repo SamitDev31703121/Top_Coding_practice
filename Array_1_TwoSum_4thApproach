@@ -1,0 +1,65 @@
+/*
+Question: Given an array arr[] of n integers and a target value, check if there exists a pair whose sum equals the target. This is a variation of the 2Sum problem.
+
+Examples: 
+
+Input: arr[] = [0, -1, 2, -3, 1], target = -2
+Output: true
+Explanation: There is a pair (1, -3) with the sum equal to given target, 1 + (-3) = -2.
+
+Input: arr[] = [1, -2, 1, 0, 5], target = 0
+Output: false
+Explanation: There is no pair with sum equals to given target. 
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//Start : 4th approach 
+// Sorting and unordered_map - O(n) time and O(n) space
+
+bool Two_Sum(vector<int>v, int size, int target) 
+{     
+  unordered_map<int, int>unordered_map;
+  for(auto &i : v)
+  {
+      unordered_map[i]++;
+  }
+  for(auto i : v)
+  {
+      if(unordered_map.find(target - i) != unordered_map.end())
+       return true;
+      else
+      continue;
+  }
+  return false;
+}  
+//End : 4th approach
+
+int main() 
+{
+ int size;
+    cin>>size;
+    vector<int>v(size);
+    cout<<"Size of Vector : "<<size<<endl;
+        
+    for(int i = 0; i<size; i++)
+    {
+        cin>>v[i];
+    }
+    cout<<"Vector elements : ";
+    for(int i = 0; i<size; i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+    
+    int target;
+    cin>>target;
+    cout<<"target : "<<target<<endl;
+    bool result = Two_Sum(v, size, target);
+    cout<<"result = "<<boolalpha<<result;
+    return 0;
+}
+
+
