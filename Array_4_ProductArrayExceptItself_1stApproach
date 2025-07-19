@@ -26,7 +26,7 @@ For i = 1, res[i] = 12.
 using namespace std;
 
 //Start : 1st approach
-//Using Product Array  - O(n^2) time and O(n) space
+//Using Brute force approach nested loop  - O(n^2) time and O(n) space
 
 void Array_Product(vector<int>v, int size) 
 { 
