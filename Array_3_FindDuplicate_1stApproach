@@ -1,4 +1,4 @@
-// Find duplicates in O(n) time and O(n) extra space
+// Find duplicates
 
 /*
 Given an array arr[] of n elements that contains elements from 0 to n-1, with any of these numbers appearing any number of times. The task is to find the repeating numbers.
