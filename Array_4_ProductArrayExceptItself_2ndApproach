@@ -1,0 +1,103 @@
+// Product of Array Except Self
+
+/*
+Given an array arr[] of n integers, construct a product array res[] (of the same size) such that res[i] is equal to the product of all the elements of arr[] except arr[i]. 
+
+Example: 
+
+Input: arr[] = [10, 3, 5, 6, 2]
+Output: [180, 600, 360, 300, 900]
+Explanation: 
+
+For i=0, res[i] = 3 * 5 * 6 * 2 is 180.
+For i = 1, res[i] = 10 * 5 * 6 * 2 is 600.
+For i = 2, res[i] = 10 * 3 * 6 * 2 is 360.
+For i = 3, res[i] = 10 * 3 * 5 * 2 is 300.
+For i = 4, res[i] = 10 * 3 * 5 * 6 is 900.
+Input: arr[] = [12, 0]
+Output: [0, 12]
+Explanation: 
+
+For i = 0, res[i] = 0.
+For i = 1, res[i] = 12.
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//Start : 2nd approach
+//Using Product Array  - O(n) time and O(n) space
+
+void Array_Product(vector<int>v, int size) 
+{ 
+    int total_mul = 1;
+    vector<int>res;
+    bool zero_exist = false;
+    for(auto i : v)
+    {
+        if(i == 0)
+        {
+            zero_exist = true;
+            continue;
+        }
+        else
+          total_mul *= i;
+    }
+    
+    if(zero_exist)
+    {
+        for(auto i : v)
+        {
+          if(i == 0)
+          {
+              res.push_back(total_mul);
+          }
+        else
+          {
+           res.push_back(0);
+          }
+        }
+    }
+    else
+    {
+      for(auto i : v)
+     {
+        if(i == 0)
+        {
+            res.push_back(total_mul);
+        }
+        else
+        {
+          res.push_back(total_mul/i);
+        }
+      }
+    }
+    
+    cout<<"Result Array = ";
+    for(auto i : res)
+    {
+       cout<<i<<" ";
+    }
+}  
+
+int main() 
+{
+ int size;
+    cin>>size;
+    vector<int>v(size);
+    cout<<"Size of Vector : "<<size<<endl;
+        
+    for(int i = 0; i<size; i++)
+    {
+        cin>>v[i];
+    }
+    cout<<"Vector elements : ";
+    for(int i = 0; i<size; i++)
+    {
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+    
+    Array_Product(v, size);
+    return 0;
+}
