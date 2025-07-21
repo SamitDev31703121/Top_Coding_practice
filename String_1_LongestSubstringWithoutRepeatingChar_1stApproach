@@ -1,0 +1,58 @@
+//Longest Substring Without Repeating Characters
+
+/*
+Given a string s having lowercase characters, find the length of the longest substring without repeating characters. 
+
+Examples:
+
+Input: s = "geeksforgeeks"
+Output: 7 
+Explanation: The longest substrings without repeating characters are "eksforg” and "ksforge", with lengths of 7.
+
+Input: s = "aaa"
+Output: 1
+Explanation: The longest substring without repeating characters is "a"
+
+Input: s = "abcdefabcbb"
+Output: 6
+Explanation: The longest substring without repeating characters is "abcdef".
+*/
+
+//1st Approach - Single loop and unordered_map - Tc - O(n), Sc - O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int longestUniqueSubstr(string s)
+{
+    unordered_map<char, bool>map;
+    int size = s.length();
+    int count = 0;
+    int maxcount = 0;
+    
+    for(char c : s)
+    {
+        if(map.find(c) == map.end())
+        {
+            count++;
+            map[c] = true;
+        }
+        else
+        {
+            maxcount = max(maxcount, count);
+            map.clear();
+            count = 0;
+        }
+    }
+   maxcount = max(maxcount, count);
+    return maxcount;
+}
+
+
+int main()
+{
+    string s = "abcdefabcbb";
+    cout << longestUniqueSubstr(s);
+    return 0;
+}
