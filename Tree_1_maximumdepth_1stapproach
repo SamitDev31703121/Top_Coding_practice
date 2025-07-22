@@ -1,0 +1,53 @@
+// Maximum Depth of Binary Tree
+
+/*
+Given a binary tree, the task is to find the maximum depth of the tree. The maximum depth or height of the tree is the number of edges in the tree from the root to the deepest node.
+Examples:   
+
+Example 1: Output: 2 he longest path from the root (node 1) goes through node 3 to node 5, which has 2 edges.
+       1 
+     2    3 
+        4   5
+
+Example 2: Output: 3 The longest path from the root (node 1) to a leaf node 5 with 3 edge.
+       1 
+     2    3 
+   4   
+      5
+*/
+
+//1st approach - Using Recursion, TC - O(n), SC - O(h)  
+#include <bits/stdc++.h>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node *left;
+    node *right;
+    
+    node(int x) : data(x), left(nullptr), right(nullptr){};
+};
+
+ int maximum_depth(node *root)
+ {
+    if(root == nullptr)
+     return -1;
+     
+    int ldepth = maximum_depth(root -> left);
+    int rdepth = maximum_depth(root -> right);
+     
+    return max(ldepth, rdepth) + 1;
+ }
+
+int main()
+{
+    node *root = new node(1);
+    root ->left = new node(2);
+    root ->right = new node(3);
+    root ->right ->left = new node(4);
+    root ->right ->right = new node(5);
+    cout<<" maximum depth = " <<maximum_depth(root);
+    return 0;
+}
